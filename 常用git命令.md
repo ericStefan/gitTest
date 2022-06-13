@@ -150,3 +150,44 @@ $git clone git@github.com:ericStefan/gitTest.git
 ```
 
 Git支持多种协议，包括`https`，但`ssh`协议速度最快。
+
+## 分支管理
+
+### 1、创建合并分支
+
+Git鼓励大量使用分支
+
+查看分支：`git branch`
+
+创建分支：`git branch <name>`
+
+切换分支：`git checkout <name>`或者`git switch <name>`
+
+创建+切换分支：`git checkout -b <name>`或者`git switch -c <name>`
+
+合并某分支到当前分支（快速合并）：`git merge <name>`
+
+删除分支：`git branch -d <name>`
+
+### 2、解决冲突
+
+当两个分区的内容在合并的时候产生冲突(例如在相同的地方有不同的修改)，需要解决冲突后再合并。
+
+合并两个冲突的分支时，Git用`<<<<<<<`，`=======`，`>>>>>>>`标记出不同分支的内容，方便我们更改。
+
+用`git log --graph`命令可以看到分支合并图。
+
+### 3、分支管理策略
+
+master是十分稳定的，仅仅用来发布新版本，平时不在上面干活
+
+一般都在dev分支上干活，到一个阶段时再把dev分支合并到master上
+
+`Fast forward`模式：这种模式下，删除分支后，会丢掉分支信息。
+
+`--no-ff`参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而`fast forward`合并就看不出来曾经做过合并。
+
+```
+$ git merge --no-ff -m "merge with no-ff" dev
+```
+
