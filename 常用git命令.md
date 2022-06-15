@@ -91,6 +91,13 @@ $git rm <filename>
 $git commit -m "..."
 ```
 
+删除文件夹
+
+```
+$git rm -r <文件夹>
+$git commit -m "...."
+```
+
 ## 远程仓库
 
 ### 1、创建SSH KEY
